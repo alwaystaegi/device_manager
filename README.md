@@ -90,6 +90,13 @@ model User{
 > npx prisma generate
 ```
 
+6. etc...)
+
+CRUD(Create,read,update,Delete) 관련
+
+Create: 우선 prisma등 대부분의 db가 클라이언트단 즉 CSR에서는 사용이 불가함. 이게 가능하다면 아마 해킹이 매우 쉬워질 것이다.
+그러하므로 create는 서버단에서 이루어져야한다. 이 프로젝트는 api폴더의 adduser(2022-09-26.04.43 커밋 기준)에서 생성을 하였다.
+
 # npm관련
 
 1. npm: 패키지를 설치하는 명령어

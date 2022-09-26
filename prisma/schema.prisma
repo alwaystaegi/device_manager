@@ -15,8 +15,8 @@ model User {
   name     String
   age      Int
   addr     String
-  favfood  String?  @default("없음....")
-  createAt DateTime @default(now())
+  favfood  String?  @default("없음....") //String(타입명)?  물음표가 붙으면 있어도 되고 없어도 되는 값임.
+  createAt DateTime @default(now()) //defalut 아무것도 입력안하면 default안의 값으로 값이 입력됨
   updateAt DateTime @updatedAt
 }
 
