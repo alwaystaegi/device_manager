@@ -92,12 +92,29 @@ model User{
 
 6. etc...)
 
-CRUD(Create,read,update,Delete) 관련
+# CRUD
 
-Create: 우선 prisma등 대부분의 db가 클라이언트단 즉 CSR에서는 사용이 불가함. 이게 가능하다면 아마 해킹이 매우 쉬워질 것이다.
+## `Create`
+
+우선 prisma등 대부분의 db가 클라이언트단 즉 CSR에서는 사용이 불가함. 이게 가능하다면 아마 해킹이 매우 쉬워질 것이다.
 그러하므로 create는 서버단에서 이루어져야한다. 이 프로젝트는 api폴더의 adduser(2022-09-26.04.43 커밋 기준)에서 생성을 하였다.
+
+## `Read`
+
+fetch("/api/alluser").then((res) => {
+res.json().then((json)}
+
+fetch("")==> 펫치 안의 주소를 가져옴. 후 then((res)=>{})로 콜백함수를 사용하면 res에 가져온 결과를 넣어준다. 이하 동일
 
 # npm관련
 
 1. npm: 패키지를 설치하는 명령어
 2. npx: 패키지를 실행하는 명령어
+
+# prisma CRUD 관련 자료
+
+https://www.prisma.io/docs/concepts/components/prisma-client/crud
+
+# 데이터 관련
+
+만약 변수와 그 값?? 뭐라해야할지 모르겠는데... users:users 이렇게 둘이 같으면 users로만 입력해도 사용가능하다... 뿅 ("pages/api/alluser:25")
