@@ -9,7 +9,7 @@ export default function (props: CtProps) {
   const [counter, setCounter] = useState(0);
 
   return (
-    <div>
+    <div className=" bg-slate-300">
       <div>제목...?{props.title.toString()}</div>
       <div>카운터:{counter}</div>
       <button onClick={() => setCounter(counter + 1)}>+</button>
