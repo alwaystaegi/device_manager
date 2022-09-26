@@ -12,8 +12,8 @@
 
 # tailwind 적용
 
-1.       [tailwind설치링크](https://tailwindcss.com/docs/guides/nextjs)
-    or
+1. [tailwind설치링크](https://tailwindcss.com/docs/guides/nextjs)
+   or
 
 ```
 >npx create-next-app my-project
