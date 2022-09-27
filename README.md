@@ -118,3 +118,7 @@ https://www.prisma.io/docs/concepts/components/prisma-client/crud
 # 데이터 관련
 
 만약 변수와 그 값?? 뭐라해야할지 모르겠는데... users:users 이렇게 둘이 같으면 users로만 입력해도 사용가능하다... 뿅 ("pages/api/alluser:25")
+
+# typescript 관련
+
+만약 타입스크립트의 적용을 잠시 우회하고 싶다라고 한다면 (자바 스크립트처럼) `//@ts-ignore`를 통해 우회할수 있다. 다만 급할 때에만 사용할 것(개발 과정에서만 사용하기... 배포할때도 사용한다면 크게 혼날 것.)

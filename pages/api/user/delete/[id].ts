@@ -1,26 +1,30 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { User } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
-import client from "../../libs/server/client";
+import client from "../../../../libs/server/client";
 
 // type Data = {
 //   name: string;
 // };
 interface Data {
   ok: Boolean;
+  deletedId?: string;
   user?: User;
+  err?: String;
 }
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
   try {
-    const user = await client.user.create({
-      data: { addr: "어흥", age: 999, name: "호랑이", favfood: "너" },
+    console.log(req.query.id);
+    const deletedUser = await client.user.delete({
+      where: {
+        id: req.query.id?.toString(),
+      },
     });
-    console.log(user);
-    res.status(200).json({ ok: true, user });
+    res.status(200).json({ ok: true, deletedId: deletedUser.id });
   } catch (err) {
-    res.status(200).json({ ok: false });
+    res.status(200).json({ ok: false, err: `${err}` });
   }
 }
