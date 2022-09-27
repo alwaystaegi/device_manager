@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn {
+  @apply bg-[#77C9FD] hover:bg-[#5ec0fd] hover:dark:bg-[#499882] dark:bg-[#27443C];
+}
