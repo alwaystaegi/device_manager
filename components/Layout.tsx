@@ -1,5 +1,3 @@
-import { OpenDirOptions } from "fs";
-import type { NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -8,8 +6,6 @@ interface LayoutProps {
   children?: React.ReactNode;
 }
 export default function Layout(props: LayoutProps) {
-  const bottomCN =
-    "border-2 w-full flex justify-center items-center cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700";
   const bottomIconName =
     "flex flex-col justify-center items-center cursor-pointer";
 
@@ -20,7 +16,7 @@ export default function Layout(props: LayoutProps) {
 
   return (
     <div className="relative flex justify-center">
-      <div className="flex justify-between h-[100vh] w-[640px] border-4 bg-white flex-col dark:text-[#ECECEE] dark:bg-[#1E1E20]">
+      <div className="flex justify-between h-[100vh] w-[640px] border-4 bg-white flex-col dark:text-[#e2e2e6] dark:bg-[#383861]">
         {/* //!탑 */}
         <div className="relative h-[100px] flex justify-center items-center border-b-2 shadow-md">
           <h1 className="text-3xl font-bold font-serif">{props.title}</h1>
@@ -64,14 +60,14 @@ export default function Layout(props: LayoutProps) {
           </div>
         </div>
         {/* //!미들 */}
-        <div className="h-[80vh]">{props.children}</div>
+        <div className="h-[77vh]">{props.children}</div>
         {/* //!바텀 */}
         <div className="h-[100px] border-t-2">
           <nav className="flex justify-between h-full">
             {/* //!메뉴1 */}
             <Link href={"/"}>
               <div
-                className={`${bottomCN} ${
+                className={`underbarbtn ${
                   router.pathname === "/"
                     ? "bg-[#cfe297] hover:bg-[#c4de76] dark:bg-[#363439]"
                     : ""
@@ -100,7 +96,7 @@ export default function Layout(props: LayoutProps) {
             {/* //!메뉴2 */}
             <Link href={"/data"}>
               <div
-                className={`${bottomCN} ${
+                className={`underbarbtn ${
                   router.pathname === "/data"
                     ? "bg-[#cfe297] hover:bg-[#c4de76] dark:bg-[#363439]"
                     : ""
@@ -130,11 +126,11 @@ export default function Layout(props: LayoutProps) {
             <Link href={"/setting"}>
               {/* <div className={bottomCN}> */}
               <div
-                className={`${bottomCN} ${
+                className={`underbarbtn ${
                   router.pathname === "/setting"
                     ? "bg-[#cfe297] hover:bg-[#c4de76] dark:bg-[#363439]"
                     : ""
-                }`}
+                } `}
               >
                 <div className={bottomIconName}>
                   {/* //!SETTING아이콘 */}

@@ -3,5 +3,8 @@
 @tailwind utilities;
 
 .btn {
-  @apply bg-[#77C9FD] hover:bg-[#5ec0fd] hover:dark:bg-[#499882] dark:bg-[#27443C];
+  @apply bg-[#a8a5ff] hover:bg-[#9a97fd] hover:dark:bg-[#8a7aff] dark:bg-[#6e5cfa] shadow-3d cursor-pointer;
+}
+.underbarbtn {
+  @apply border-2 w-full flex justify-center items-center cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 shadow-test;
 }
