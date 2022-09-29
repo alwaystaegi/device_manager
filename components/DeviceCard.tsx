@@ -12,10 +12,6 @@ export default function DeviceCard({ device }: DeviceCardProps) {
       .then((res) => res.json())
       .then((json) => {
         setValue(json.result);
-        if (value.toString().length > 4) {
-          document.querySelector("#value")?.classList.remove("text-5xl");
-          document.querySelector("#value")?.classList.add("text-3xl");
-        }
       });
   }, []);
 
