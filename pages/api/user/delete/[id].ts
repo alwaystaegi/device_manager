@@ -2,7 +2,7 @@
 import { Device, DeviceType } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { userAgent } from "next/server";
-import client from "../../../libs/server/client";
+import client from "../../../../libs/server/client";
 
 // type Data = {
 //   name: string;
@@ -32,5 +32,7 @@ export default async function handler(
     response.status(200).json({ ok: true });
   } catch (err) {
     response.status(200).json({ ok: false, error: `${err}` });
+  } finally {
+    await client.$disconnect();
   }
 }

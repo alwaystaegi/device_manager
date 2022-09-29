@@ -22,5 +22,8 @@ export default async function handler(
       name: "OKOKOK",
       users /*만약 변수와 그 값?? 뭐라해야할지 모르겠는데... users:users 이렇게 둘이 같으면 users로 적어도됨*/,
     });
-  } catch (err) {}
+  } catch (err) {
+  } finally {
+    await client.$disconnect();
+  }
 }

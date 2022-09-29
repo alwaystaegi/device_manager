@@ -1,5 +1,6 @@
 import { Device } from "@prisma/client";
 import type { NextPage } from "next";
+import { useRouter } from "next/router";
 import { ChangeEvent, useEffect, useState } from "react";
 import { json } from "stream/consumers";
 import Layout from "../components/Layout";
@@ -12,7 +13,7 @@ const Home: NextPage = () => {
   const [errmsg, setErrmsg] = useState(""); //?에러 메세지
 
   const [devices, setDevices] = useState<Device[]>([]);
-
+  const router = useRouter();
   function 불러오기() {
     fetch("/api/device/alldevice")
       .then((res) => res.json())

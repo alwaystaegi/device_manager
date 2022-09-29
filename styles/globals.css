@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "react-toggle/style.css";
+
 .btn {
   @apply bg-[#a8a5ff] hover:bg-[#9a97fd] hover:dark:bg-[#8a7aff] dark:bg-[#6e5cfa] shadow-3d cursor-pointer;
 }

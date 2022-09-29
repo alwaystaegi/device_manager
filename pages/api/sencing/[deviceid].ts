@@ -81,6 +81,8 @@ export default async function handler(
       response.status(404).json({
         ok: false,
       });
+    } finally {
+      await client.$disconnect();
     }
   } else {
     response.status(405).json({

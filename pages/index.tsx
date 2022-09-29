@@ -1,20 +1,28 @@
 import { Device } from "@prisma/client";
 import type { NextPage } from "next";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { clearInterval } from "timers";
 import DeviceCard from "../components/DeviceCard";
 import Layout from "../components/Layout";
+import Toggle from "react-toggle";
+import ScaleLoader from "react-spinners/ScaleLoader";
 declare global {
   interface Window {
     time: NodeJS.Timer;
   }
 }
 const Home: NextPage = () => {
+  const [bToggle, setBToggle] = useState(false);
   const [devices, setDevices] = useState<Device[]>([]);
+  const [timerID, setTimerID] = useState<NodeJS.Timer>();
   const [flag, setFlag] = useState(false);
-
+  const router = useRouter();
   useEffect(() => {
+    if (timerID) {
+      window.clearInterval(timerID);
+    }
     //컴포넌트가 로딩될때 한번만 실행됨
     //사용자 목록을 가져와서 state 변수에 저장
     fetch("/api/device/alldevice").then((res /*response*/) => {
@@ -24,25 +32,22 @@ const Home: NextPage = () => {
     });
   }, []);
   function 실시간로딩함수() {
-    if (!flag) {
-      window.time = setInterval(() => {
+    setBToggle(!bToggle);
+    if (!bToggle) {
+      const tempTimer = setInterval(() => {
         fetch("/api/device/alldevice").then((res /*response*/) => {
           res.json().then((json) => {
             setDevices(json.devices);
           });
         });
-      }, 100);
+      }, 5000);
+      setTimerID(tempTimer);
     } else {
-      window.clearInterval(window.time);
+      window.clearInterval(timerID);
     }
     document.querySelector("#spinner")?.classList.toggle("animate-spin");
-    setFlag(!flag);
   }
-  function 클릭됨() {
-    document.querySelector("#target")?.classList.toggle("translate-x-5");
-    console.log(document.querySelector("#target")?.classList);
-    실시간로딩함수();
-  }
+
   return (
     <Layout title="HOME">
       <div className="h-full  overflow-y-scroll p-6 space-y-7 font-sans">
@@ -79,37 +84,15 @@ const Home: NextPage = () => {
           <div className="flex justify-between items-center">
             <div className="text-3xl font-bold">Linked to You</div>
             <div className="flex">
-              <button
-                id="test"
-                className="relative cursor-pointer flex justify-around items-center bg-slate-200 w-10 rounded-lg text-gray-900 font-bold font-sans"
-                onClick={클릭됨}
-              >
-                <div>O</div>
-                <div>X</div>
-                <div id="target" className="absolute left-0">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6 fill-black"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z"
-                    />
-                  </svg>
-                </div>
-              </button>
-              <span>실시간</span>
-              <svg
+              <ScaleLoader loading={bToggle} height={20} speedMultiplier={3} />
+              <Toggle
+                id="cheese-status"
+                defaultChecked={bToggle}
+                onChange={실시간로딩함수}
+              />
+              <label htmlFor="cheese-status">실시간</label>
+
+              {/* <svg
                 id="spinner"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -119,12 +102,13 @@ const Home: NextPage = () => {
                 // !스핀넣을 자리
                 className="w-6 h-6"
               >
+                
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
                 />
-              </svg>
+              </svg> */}
             </div>
           </div>
           {/* //!센서목록 */}
