@@ -5,8 +5,8 @@
 @import "react-toggle/style.css";
 
 .btn {
-  @apply bg-[#a8a5ff] hover:bg-[#9a97fd] hover:dark:bg-[#8a7aff] dark:bg-[#6e5cfa] shadow-3d cursor-pointer;
+  @apply bg-[#a8a5ff] hover:bg-[#9a97fd] hover:dark:bg-[#8a7aff] dark:bg-[#6e5cfa] cursor-pointer;
 }
 .underbarbtn {
-  @apply border-2 w-full flex justify-center items-center cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 shadow-test;
+  @apply border-2 w-full flex justify-center items-center cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700;
 }
