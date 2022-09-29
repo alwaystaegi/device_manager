@@ -192,7 +192,7 @@ const Home: NextPage = () => {
           </div>
           <div className="text-red-500">{errmsg}</div>
           <button
-            className="w-full py-5 font-bold rounded text-2xl btn"
+            className="w-full py-5 font-bold rounded text-2xl btn "
             onClick={addfn}
           >
             등록

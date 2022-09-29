@@ -67,7 +67,8 @@ export default function Layout(props: LayoutProps) {
             {/* //!메뉴1 */}
             <Link href={"/"}>
               <div
-                className={`underbarbtn ${
+                className={`underbarbtn
+                ${
                   router.pathname === "/"
                     ? "bg-[#cfe297] hover:bg-[#c4de76] dark:bg-[#363439]"
                     : ""
