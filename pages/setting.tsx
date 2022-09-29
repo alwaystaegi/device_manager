@@ -82,7 +82,6 @@ const Home: NextPage = () => {
   }
   // ? <select change>
   function 장치종류변경(event: ChangeEvent<HTMLSelectElement>) {
-    console.log(event.currentTarget.value);
     setType(event.currentTarget.value);
   }
   useEffect(() => {
@@ -203,6 +202,11 @@ const Home: NextPage = () => {
         {/* //!장비 삭제하기 */}
         <div>
           <div>
+            {0 === devices.length && (
+              <div className="w-full my-5 text-4xl text-red-500 flex justify-center">
+                장비가 존재하지 않습니다.
+              </div>
+            )}
             {devices.map((device, idx) => (
               <div
                 key={idx}

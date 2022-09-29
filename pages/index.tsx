@@ -132,6 +132,11 @@ const Home: NextPage = () => {
             <div className="border-4 w-full"></div>
 
             {/* //!장비카드 */}
+            {0 === devices.length && (
+              <div className="w-full my-5 text-4xl text-red-500 flex justify-center">
+                장비가 존재하지 않습니다.
+              </div>
+            )}
             {devices.map((device, idx) => (
               <DeviceCard key={idx} device={device} />
               // <div
