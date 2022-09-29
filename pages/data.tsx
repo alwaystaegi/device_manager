@@ -47,7 +47,6 @@ const Home: NextPage = () => {
           setValue("");
           document.querySelector("#addInfo")?.classList.add("hidden");
           alert("등록에 성공하였습니다.");
-          router.push("./");
         }
       });
   }
